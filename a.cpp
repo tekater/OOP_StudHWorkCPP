@@ -45,7 +45,7 @@ class Student {
     int* marks;
     int size;
 
-    Date start;
+    Date date;
 
     void keyName(const char* n) {
         name = new char[strlen(n) + 1];
@@ -62,7 +62,7 @@ class Student {
     }
 
 public:
-    Student(const char* Uname, int* Umarks, int Usize, Date start) :start{ start } {
+    Student(const char* Uname, int* Umarks, int Usize, Date udate) :date{ udate } {
 
         keyName(Uname);
 
@@ -87,7 +87,7 @@ public:
         for (int i = 0; i < size; i++) {
             cout << marks[i] << " ";
         }
-        cout << "\nДата рождения: " << start.getDay() << "." << start.getMonth() << "." << start.getYear() << "\n";
+        cout << "\nДата рождения: " << date.getDay() << "." << date.getMonth() << "." << date.getYear() << "\n";
     }
 
     ~Student() {
