@@ -45,9 +45,7 @@ class Student {
     int* marks;
     int size;
 
-    int day;
-    int month;
-    int year;
+    Date start;
 
     void keyName(const char* n) {
         name = new char[strlen(n) + 1];
@@ -64,39 +62,13 @@ class Student {
     }
 
 public:
-    Student(const char* Uname, int* Umarks, int Usize,int d,int m,int y) {
+    Student(const char* Uname, int* Umarks, int Usize, Date start) :start{ start } {
 
         keyName(Uname);
 
         keyMarks(Umarks, Usize);
 
-        day = d;
-        month = m;
-        year = y;
-
     }
-    /*
-    Student(const char* Uname) {
-        int Usize = 3;
-
-        keyName(Uname);
-
-        keyMarks(new int[3] {1, 1, 1}, 3);
-    }
-    Student(int* Umarks, int Usize) {
-
-        keyName("Noname");
-
-        keyMarks(new int[3] {1, 1, 1}, 3);
-
-    }
-    Student() {
-
-        keyName("Noname");
-
-        keyMarks(new int[3] {1, 1, 1}, 3);
-
-    }*/
 
     void setName(const char* Uname) {
         delete[] name;
@@ -115,7 +87,7 @@ public:
         for (int i = 0; i < size; i++) {
             cout << marks[i] << " ";
         }
-        cout << "\nДата рождения: " << day << "." << month << "." << year << "\n";
+        cout << "\nДата рождения: " << start.getDay() << "." << start.getMonth() << "." << start.getYear() << "\n";
     }
 
     ~Student() {
@@ -137,10 +109,6 @@ void main() {
     const int size = 5;
     int marks[size]{ 1,5,3,4,2 };
 
-    
-
-    Date date(10, 2, 2000);
-
-    Student oleg{ "Олег", marks,size, date.getDay(),date.getMonth(),date.getYear()};
+    Student oleg{ "Олег", marks,size, {10,2,2000} };
     oleg.print();
 }
